@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgtnycg7fipsl"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_trqnh"]
+[ext_resource type="PackedScene" uid="uid://cysrswq78gf4c" path="res://scenes/bullet/bullet.tscn" id="2_e88i5"]
+[ext_resource type="Texture2D" uid="uid://cgw04uttxrtco" path="res://assets/PlaceHolderSprites.png" id="2_kasr1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qj2sg"]
+radius = 59.5063
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_trqnh")
+bullet = ExtResource("2_e88i5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kasr1")
+region_enabled = true
+region_rect = Rect2(54, 45, 125, 125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qj2sg")
+
+[node name="BulletSpawner" type="Node2D" parent="."]
+position = Vector2(63, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BulletSpawner"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_kasr1")
+region_enabled = true
+region_rect = Rect2(54, 45, 125, 125)
