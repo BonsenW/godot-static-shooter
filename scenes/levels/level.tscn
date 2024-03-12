@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxkytj5pkx4yp"]
+[gd_scene load_steps=3 format=3 uid="uid://bxkytj5pkx4yp"]
 
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_frtwf"]
 [ext_resource type="PackedScene" uid="uid://cgtnycg7fipsl" path="res://scenes/player/player.tscn" id="1_t6fkf"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_frtwf")
 
 [node name="Player" parent="." instance=ExtResource("1_t6fkf")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="attack_input_pressed" from="Player" to="." method="_on_player_attack_input_pressed"]

@@ -1,24 +1,16 @@
 extends StaticBody2D
 
-@export var bullet: PackedScene
+signal attack_input_pressed(bullet_path: Resource, spawn_position: Vector2)
+
 @export var fire_power: int = 22
+
+var bullet_path: Resource = preload("res://scenes/bullet/bullet.tscn")
 
 func _process(delta: float) -> void:
 	
+	# Handles shooting input
 	if Input.is_action_just_pressed("attack"):
-		shoot()
-		
+		attack_input_pressed.emit(bullet_path, $Marker2D.global_position)
+	
+	# Aim at mouse position
 	look_at(get_global_mouse_position())
-
-
-func shoot() -> void:
-	# Instantiate the bullet
-	var bullet_instance: RigidBody2D = bullet.instantiate() as RigidBody2D
-	
-	# Add the bullet instance as a child of the current scene
-	add_child(bullet_instance)
-	
-	# Set the properties of the bullet
-	bullet_instance.position = $Marker2D.position
-
-	bullet_instance.linear_velocity = get_global_mouse_position() - bullet_instance.position
