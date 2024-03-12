@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://671eug6hhs8p"]
+[gd_scene load_steps=4 format=3 uid="uid://671eug6hhs8p"]
 
 [ext_resource type="Script" path="res://scenes/enemy/basic_enemy.gd" id="1_i78eg"]
 [ext_resource type="Texture2D" uid="uid://cgw04uttxrtco" path="res://assets/PlaceHolderSprites.png" id="2_pp21h"]
+[ext_resource type="Script" path="res://scenes/enemy/Container.gd" id="3_hivu3"]
 
 [node name="BasicEnemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -17,3 +18,32 @@ region_rect = Rect2(412, 45, 135, 117)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -15, -17, 15, 17, 15)
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_hivu3")
+
+[node name="ColorRect" type="ColorRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = -10.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 0.521569, 0.521569, 1)
