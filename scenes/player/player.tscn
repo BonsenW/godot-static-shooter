@@ -9,6 +9,8 @@ radius = 59.5063
 [node name="Player" type="StaticBody2D"]
 collision_mask = 6
 script = ExtResource("1_trqnh")
+fire_power = null
+damage = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_kasr1")
