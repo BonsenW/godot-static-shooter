@@ -10,9 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Dungeon Game"
+config/name="Static Shooter"
+config/tags=PackedStringArray("development")
 run/main_scene="res://scenes/levels/level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+
+[autoload]
+
+Player="*res://scenes/player/player.tscn"
 
 [display]
 
@@ -59,6 +64,7 @@ attack={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Projectile"
 
 [rendering]
 

@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cysrswq78gf4c"]
+[gd_scene load_steps=4 format=3 uid="uid://cysrswq78gf4c"]
 
 [ext_resource type="Texture2D" uid="uid://cgw04uttxrtco" path="res://assets/PlaceHolderSprites.png" id="1_e5wbd"]
+[ext_resource type="Script" path="res://scenes/bullet/bullet.gd" id="1_k5mtp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkvi6"]
 radius = 13.8924
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
 gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_k5mtp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -16,3 +23,11 @@ region_rect = Rect2(54, 45, 125, 125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vkvi6")
+
+[node name="LifeTimeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTimeTimer" to="." method="_on_life_time_timer_timeout"]
